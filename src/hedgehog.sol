@@ -4,6 +4,7 @@ pragma solidity =0.8.13;
 //import IERC20
 //import AAVE interface
 //import VOLTZ interface
+//import ownable
 
 contract HedgeHog {
     //customer deposits USDC into contract
@@ -12,7 +13,7 @@ contract HedgeHog {
     //contract deposits aUSDC into VOLTZ
     //contract recieves fixed position tokens
     //contract wraps fixed position tokens
-    //contracts allows customer to withdraw tokens
+    //contracts enables customer to withdraw wrapped tokens less fee
 
     //constructor here
     //USDC address
@@ -28,7 +29,7 @@ contract HedgeHog {
         return amount;
     }
 
-    //function interactWithAAVE
-    //function interactWithVoltz
-    //function interactWithTokenWrapper
+    //function interactWithAAVE internal
+    //function interactWithVoltz internal
+    //function interactWithTokenWrapper internal
 }
