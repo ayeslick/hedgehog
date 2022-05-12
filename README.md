@@ -1,6 +1,6 @@
 # HedgeHog
 
-Protocol that wraps fixed income positions
+Wraps fixed income positions
 
 ## Getting Started
 
