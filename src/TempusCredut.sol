@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 error NotCurrentHolder();
 error AmountExceedsDepositValue();
 
-contract WETHCredut is ERC721("??", "??"), Ownable {
+contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
     uint256 private _tokenId;
 
     //NFTID => value stored in NFT
