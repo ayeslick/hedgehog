@@ -12,7 +12,7 @@ error AmountExceedsDepositValue();
 contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
     uint256 private _tokenId;
 
-    //NFTID => value stored in NFT
+    //NFTID => value stored within NFT
     mapping(uint256 => uint256) public depositValue;
 
     event AddValue(address indexed customer, uint256 tokenId, uint256 amount);
@@ -30,9 +30,6 @@ contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
         _safeMint(customer, tokenId);
     }
 
-    /*customer cannot withdraw more than depositValue
-    because it will throw Arithmetic over/underflow error
-    */
     function subtractValueFromCREDUT(
         address customer,
         uint256 tokenId,
@@ -40,6 +37,7 @@ contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
     ) public onlyOwner {
         address currentHolder = ERC721.ownerOf(tokenId);
         if (currentHolder != customer) revert NotCurrentHolder();
+        if (amount >= depositValue[tokenId]) revert AmountExceedsDepositValue();
         depositValue[tokenId] -= amount;
         emit SubtractValue(customer, tokenId, amount);
     }

@@ -69,7 +69,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         feeToTransfer += adjustedFee;
         uint256 adjustedAmount = amount - adjustedFee;
         globalDepositValue += adjustedAmount;
-        ERC20(tToken).safeTransferFrom(customer, address(this), adjustedAmount);
+        ERC20(tToken).safeTransferFrom(customer, address(this), amount);
         creds.mint(customer, adjustedAmount);
         credut.createCREDUT(customer, adjustedAmount);
         emit Deposit(customer, adjustedAmount);
