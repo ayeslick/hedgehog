@@ -3,19 +3,23 @@ pragma solidity =0.8.13;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "solmate/utils/ReentrancyGuard.sol";
+import "solmate/tokens/ERC20.sol";
+import "solmate/utils/SafeTransferLib.sol";
 import "../interfaces/ICREDS.sol";
 import "../interfaces/ICREDUT.sol";
 
-error CeilingReached();
-error EmptySend();
-error EmergencyNotActive();
-error EmergencyActive();
-error NoFeesToTransfer();
-error FeeTooLow();
-error FeeTooHigh();
-
 contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
+    using SafeTransferLib for ERC20;
+
+    error CeilingReached();
+    error EmptySend();
+    error EmergencyNotActive();
+    error EmergencyActive();
+    error NoFeesToTransfer();
+    error FeeTooLow();
+    error FeeTooHigh();
+
     ICREDS public creds;
     ICREDUT public credut;
 
@@ -29,6 +33,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     uint256 private immutable emergencyActive = 2;
 
     address payable public treasury;
+    address public tToken;
 
     uint256 private constant MINIMUM_FEE_PERCENTAGE = 1;
     uint256 private constant MAXIMUM_FEE_PERCENTAGE = 10;
@@ -45,26 +50,29 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         ICREDS _creds,
         ICREDUT _credut,
         address payable _treasury,
+        address _tToken,
         uint256 _globalCeiling
     ) {
         creds = _creds;
         credut = _credut;
         treasury = _treasury;
+        tToken = _tToken;
         globalCeiling = _globalCeiling;
     }
 
-    function deposit() public payable whenNotPaused nonReentrant {
-        if (msg.value == 0) revert EmptySend();
+    function deposit(uint256 amount) public whenNotPaused nonReentrant {
+        if (amount == 0) revert EmptySend();
         if (globalDepositValue >= globalCeiling) revert CeilingReached();
 
         address customer = msg.sender;
-        uint256 adjustedFee = _calculateFee(msg.value);
+        uint256 adjustedFee = _calculateFee(amount);
         feeToTransfer += adjustedFee;
-        uint256 amount = msg.value - adjustedFee;
-        globalDepositValue += amount;
-        creds.mint(customer, amount);
-        credut.createCREDUT(customer, amount);
-        emit Deposit(customer, amount);
+        uint256 adjustedAmount = amount - adjustedFee;
+        globalDepositValue += adjustedAmount;
+        ERC20(tToken).safeTransferFrom(customer, address(this), adjustedAmount);
+        creds.mint(customer, adjustedAmount);
+        credut.createCREDUT(customer, adjustedAmount);
+        emit Deposit(customer, adjustedAmount);
     }
 
     function partialWithdraw(uint256 tokenId, uint256 amount)
@@ -76,8 +84,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         credut.subtractValueFromCREDUT(customer, tokenId, amount);
         creds.burn(customer, amount);
         globalDepositValue -= amount;
-        (bool success, ) = payable(customer).call{value: amount}("");
-        require(success, "Partial withdraw failed");
+        ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit SubtractFromCredut(customer, tokenId, amount);
     }
 
@@ -90,23 +97,19 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         uint256 amount = credut.deleteCREDUT(customer, tokenId);
         globalDepositValue -= amount;
         creds.burn(customer, amount);
-        (bool success, ) = payable(customer).call{value: amount}("");
-        require(success, "Total Claim failed");
+        //change to ERC20
+        ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit Withdrawal(customer, amount);
     }
 
-    receive() external payable {
-        deposit();
-    }
-
     function activateEmergency() public onlyOwner whenPaused {
-        if (emergencyStatus == emergencyActive) revert EmergencyActive();
-        emergencyStatus = emergencyActive;
+        if (emergencyStatus == emergencyNotActive)
+            emergencyStatus = emergencyActive;
     }
 
     function deactivateEmergency() public onlyOwner {
-        if (emergencyStatus == emergencyNotActive) revert EmergencyNotActive();
-        emergencyStatus = emergencyNotActive;
+        if (emergencyStatus == emergencyActive)
+            emergencyStatus = emergencyNotActive;
     }
 
     //same as claimAllUnderlying except customer doesnt need an equal number of creds
@@ -116,8 +119,8 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         address customer = msg.sender;
         uint256 amount = credut.deleteCREDUT(customer, tokenId);
         globalDepositValue -= amount;
-        (bool success, ) = payable(customer).call{value: amount}("");
-        require(success, "Emergency Withdraw Failed");
+        //change to ERC20
+        ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit Withdrawal(customer, amount);
     }
 
@@ -143,8 +146,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
 
         uint256 allFees = feeToTransfer;
         feeToTransfer -= allFees;
-        (bool success, ) = treasury.call{value: allFees}("");
-        require(success, "fee send failed");
+        ERC20(tToken).safeTransferFrom(address(this), treasury, allFees);
     }
 
     function setFeePercentage(uint256 _feePercentage) public onlyOwner {
@@ -153,6 +155,10 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         if (_feePercentage > MAXIMUM_FEE_PERCENTAGE) revert FeeTooHigh();
 
         feePercentage = _feePercentage;
+    }
+
+    function setTempusTokenAddress(address _tToken) public onlyOwner {
+        tToken = _tToken;
     }
 
     function adjustCeiling(uint256 _amount) public onlyOwner {
@@ -164,7 +170,6 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     }
 
     function unpause() public onlyOwner {
-        if (emergencyStatus == emergencyActive) revert EmergencyActive();
-        _unpause();
+        if (emergencyStatus == emergencyNotActive) _unpause();
     }
 }
