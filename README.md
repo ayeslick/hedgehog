@@ -1,6 +1,6 @@
 # HedgeHog
 
-Wraps fixed income positions
+Creates Credit From Fixed Income Positions
 
 ## Getting Started
 
