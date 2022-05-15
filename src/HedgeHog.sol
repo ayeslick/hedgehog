@@ -16,7 +16,7 @@ interface ITEMPUSCONTROLLER {
         ITempusAMM tempusAMM,
         uint256 tokenAmount,
         bool isBackingToken,
-        uint256 minTYSRate,
+        uint256 minTYSRate, //how to determine this?
         uint256 deadline
     ) external;
 }
@@ -38,11 +38,15 @@ contract HedgeHog is Ownable {
     //then call depositAndFix
 
     ITOKENMANAGER public immutable tokenmanager;
-    address public tToken;
+    address public tToken; //0xfE932d00b9858C42108378053C11bE79656116AF
+    address public constant TEMPUS_AMM =
+        0x7cA043143C6e30bDA28dDc7322d7951F538D75e8;
+    uint256 public constant DEADLINE = 8640000000000000;
 
     constructor(ITOKENMANAGER _tokenmanager, address _tToken) {
         tokenmanager = _tokenmanager;
         tToken = _tToken;
+        ERC20(tToken).approve(address(this), type(uint256).max);
     }
 
     uint256 public globalAmount;
