@@ -6,11 +6,11 @@ pragma solidity =0.8.13;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-error NotCurrentHolder();
-error AmountExceedsDepositValue();
+contract TempusCredit is ERC721("Tempus DAI Credit", "tDAICREDIT"), Ownable {
+    error NotCurrentHolder();
+    error AmountExceedsDepositValue();
 
-contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
-    uint256 private _tokenId;
+    uint256 public _tokenId;
 
     //NFTID => value stored within NFT
     mapping(uint256 => uint256) public depositValue;
@@ -24,13 +24,13 @@ contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
     event Deleted(address indexed customer, uint256 tokenId, uint256 value);
 
     //core
-    function createCREDUT(address customer, uint256 amount) public onlyOwner {
+    function createCREDIT(address customer, uint256 amount) public onlyOwner {
         uint256 tokenId = ++_tokenId;
         depositValue[tokenId] = amount;
         _safeMint(customer, tokenId);
     }
 
-    function subtractValueFromCREDUT(
+    function subtractValueFromCREDIT(
         address customer,
         uint256 tokenId,
         uint256 amount
@@ -42,7 +42,7 @@ contract TempusCredut is ERC721("Tempus CREDUT", "tCREDUT"), Ownable {
         emit SubtractValue(customer, tokenId, amount);
     }
 
-    function deleteCREDUT(address customer, uint256 tokenId)
+    function deleteCREDIT(address customer, uint256 tokenId)
         public
         onlyOwner
         returns (uint256 value)

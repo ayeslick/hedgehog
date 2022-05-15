@@ -2,10 +2,24 @@
 pragma solidity =0.8.13;
 
 //import IERC20
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "solmate/tokens/ERC20.sol";
 
 //import ownable
 import "@openzeppelin/contracts/access/Ownable.sol";
+
+//import interface
+import "./interfaces/ITOKENMANAGER.sol";
+import "./interfaces/ITempusAMM.sol";
+
+interface ITEMPUSCONTROLLER {
+    function depositAndFix(
+        ITempusAMM tempusAMM,
+        uint256 tokenAmount,
+        bool isBackingToken,
+        uint256 minTYSRate,
+        uint256 deadline
+    ) external;
+}
 
 contract HedgeHog is Ownable {
     error NotEnoughFunds();
@@ -22,4 +36,20 @@ contract HedgeHog is Ownable {
     //for rollover:
     //call either redeemToBacking or redeemToYieldBearing
     //then call depositAndFix
+
+    ITOKENMANAGER public immutable tokenmanager;
+    address public tToken;
+
+    constructor(ITOKENMANAGER _tokenmanager, address _tToken) {
+        tokenmanager = _tokenmanager;
+        tToken = _tToken;
+    }
+
+    uint256 public globalAmount;
+
+    function depositThenRecieveCredsAndCredit(uint256 _amount) external {}
+
+    function rolloverAfterMaturity() external onlyOwner {}
+
+    function _interactWithTempus() internal {}
 }

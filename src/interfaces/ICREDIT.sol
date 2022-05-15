@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity =0.8.13;
 
-interface ICREDUT {
+interface ICREDIT {
     function createCREDUT(address customer, uint256 amount) external;
 
-    function subtractValueFromCREDUT(
+    function subtractValueFromCREDIT(
         address customer,
         uint256 tokenId,
         uint256 amount
     ) external;
 
-    function deleteCREDUT(address customer, uint256 tokenId)
+    function deleteCREDIT(address customer, uint256 tokenId)
         external
         returns (uint256 value);
 

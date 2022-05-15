@@ -7,7 +7,7 @@ import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/tokens/ERC20.sol";
 import "solmate/utils/SafeTransferLib.sol";
 import "../interfaces/ICREDS.sol";
-import "../interfaces/ICREDUT.sol";
+import "../interfaces/ICREDIT.sol";
 
 contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     using SafeTransferLib for ERC20;
@@ -21,7 +21,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     error FeeTooHigh();
 
     ICREDS public creds;
-    ICREDUT public credut;
+    ICREDIT public credit;
 
     uint256 public globalDepositValue;
     uint256 public globalCeiling;
@@ -60,7 +60,12 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         globalCeiling = _globalCeiling;
     }
 
-    function deposit(uint256 amount) public whenNotPaused nonReentrant {
+    function deposit(uint256 amount)
+        external
+        whenNotPaused
+        nonReentrant
+        onlyOwner
+    {
         if (amount == 0) revert EmptySend();
         if (globalDepositValue >= globalCeiling) revert CeilingReached();
 
@@ -71,17 +76,18 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         globalDepositValue += adjustedAmount;
         ERC20(tToken).safeTransferFrom(customer, address(this), amount);
         creds.mint(customer, adjustedAmount);
-        credut.createCREDUT(customer, adjustedAmount);
+        credit.createCREDUT(customer, adjustedAmount);
         emit Deposit(customer, adjustedAmount);
     }
 
     function partialWithdraw(uint256 tokenId, uint256 amount)
-        public
+        external
         whenNotPaused
         nonReentrant
+        onlyOwner
     {
         address customer = msg.sender;
-        credut.subtractValueFromCREDUT(customer, tokenId, amount);
+        credit.subtractValueFromCREDIT(customer, tokenId, amount);
         creds.burn(customer, amount);
         globalDepositValue -= amount;
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
@@ -89,37 +95,39 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     }
 
     function claimAllUnderlying(uint256 tokenId)
-        public
+        external
         whenNotPaused
         nonReentrant
+        onlyOwner
     {
         address customer = msg.sender;
-        uint256 amount = credut.deleteCREDUT(customer, tokenId);
+        uint256 amount = credut.deleteCREDIT(customer, tokenId);
         globalDepositValue -= amount;
         creds.burn(customer, amount);
-        //change to ERC20
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit Withdrawal(customer, amount);
     }
 
-    function activateEmergency() public onlyOwner whenPaused {
+    function activateEmergency() external onlyOwner whenPaused {
         if (emergencyStatus == emergencyNotActive)
             emergencyStatus = emergencyActive;
     }
 
-    function deactivateEmergency() public onlyOwner {
+    function deactivateEmergency() external onlyOwner {
         if (emergencyStatus == emergencyActive)
             emergencyStatus = emergencyNotActive;
     }
 
     //same as claimAllUnderlying except customer doesnt need an equal number of creds
-    function emergencyWithdraw(uint256 tokenId) public whenPaused nonReentrant {
+    function emergencyWithdraw(uint256 tokenId)
+        external
+        whenPaused
+        nonReentrant
+    {
         if (emergencyStatus == emergencyNotActive) revert EmergencyNotActive();
-
         address customer = msg.sender;
-        uint256 amount = credut.deleteCREDUT(customer, tokenId);
+        uint256 amount = credut.deleteCREDIT(customer, tokenId);
         globalDepositValue -= amount;
-        //change to ERC20
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit Withdrawal(customer, amount);
     }
@@ -135,13 +143,13 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     }
 
     function setTreasuryAddress(address payable _newTreasuryAddress)
-        public
+        external
         onlyOwner
     {
         treasury = _newTreasuryAddress;
     }
 
-    function sendToFeesTreasury() public onlyOwner {
+    function sendToFeesTreasury() external onlyOwner {
         if (feeToTransfer == 0) revert NoFeesToTransfer();
 
         uint256 allFees = feeToTransfer;
@@ -149,7 +157,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         ERC20(tToken).safeTransferFrom(address(this), treasury, allFees);
     }
 
-    function setFeePercentage(uint256 _feePercentage) public onlyOwner {
+    function setFeePercentage(uint256 _feePercentage) external onlyOwner {
         if (_feePercentage < MINIMUM_FEE_PERCENTAGE) revert FeeTooLow();
 
         if (_feePercentage > MAXIMUM_FEE_PERCENTAGE) revert FeeTooHigh();
@@ -157,19 +165,19 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         feePercentage = _feePercentage;
     }
 
-    function setTempusTokenAddress(address _tToken) public onlyOwner {
+    function setTempusTokenAddress(address _tToken) external onlyOwner {
         tToken = _tToken;
     }
 
-    function adjustCeiling(uint256 _amount) public onlyOwner {
+    function adjustCeiling(uint256 _amount) external onlyOwner {
         globalCeiling = _amount;
     }
 
-    function pause() public onlyOwner {
+    function pause() external onlyOwner {
         _pause();
     }
 
-    function unpause() public onlyOwner {
+    function unpause() external onlyOwner {
         if (emergencyStatus == emergencyNotActive) _unpause();
     }
 }
