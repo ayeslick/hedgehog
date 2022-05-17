@@ -37,23 +37,35 @@ contract HedgeHog is Ownable {
     //call either redeemToBacking or redeemToYieldBearing
     //then call depositAndFix
 
-    ITOKENMANAGER public immutable tokenmanager;
-    address public tToken; //0xfE932d00b9858C42108378053C11bE79656116AF
-    address public constant TEMPUS_AMM =
-        0x7cA043143C6e30bDA28dDc7322d7951F538D75e8;
-    uint256 public constant DEADLINE = 8640000000000000;
+    ITOKENMANAGER internal immutable tokenmanager;
+    ITEMPUSCONTROLLER internal constant TEMPUS_CONTROLLER =
+        ITEMPUSCONTROLLER(0xdB5fD0678eED82246b599da6BC36B56157E4beD8);
+    address internal tToken = 0xfE932d00b9858C42108378053C11bE79656116AF;
+    ITempusAMM internal constant TEMPUS_AMM =
+        ITempusAMM(0x7cA043143C6e30bDA28dDc7322d7951F538D75e8);
+    uint256 internal constant DEADLINE = 8640000000000000;
 
-    constructor(ITOKENMANAGER _tokenmanager, address _tToken) {
+    constructor(ITOKENMANAGER _tokenmanager) {
         tokenmanager = _tokenmanager;
-        tToken = _tToken;
         ERC20(tToken).approve(address(this), type(uint256).max);
     }
 
     uint256 public globalAmount;
 
-    function depositThenRecieveCredsAndCredit(uint256 _amount) external {}
+    function depositThenRecieveCredsAndCredit(
+        uint256 _amount,
+        uint256 minTYSRate
+    ) external returns (uint256) {
+        TEMPUS_CONTROLLER.depositAndFix(
+            TEMPUS_AMM,
+            _amount,
+            true,
+            minTYSRate,
+            DEADLINE
+        );
+        uint256 recievedTokens = ERC20(tToken).balanceOf(address(this));
+        return tokenmanager.deposit(recievedTokens);
+    }
 
-    function rolloverAfterMaturity() external onlyOwner {}
-
-    function _interactWithTempus() internal {}
+    // function rolloverAfterMaturity() external onlyOwner {}
 }

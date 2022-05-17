@@ -6,8 +6,8 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 import "solmate/utils/ReentrancyGuard.sol";
 import "solmate/tokens/ERC20.sol";
 import "solmate/utils/SafeTransferLib.sol";
-import "../interfaces/ICREDS.sol";
-import "../interfaces/ICREDIT.sol";
+import "./interfaces/ICREDS.sol";
+import "./interfaces/ICREDIT.sol";
 
 contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     using SafeTransferLib for ERC20;
@@ -48,13 +48,13 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
 
     constructor(
         ICREDS _creds,
-        ICREDUT _credut,
+        ICREDIT _credit,
         address payable _treasury,
         address _tToken,
         uint256 _globalCeiling
     ) {
         creds = _creds;
-        credut = _credut;
+        credit = _credit;
         treasury = _treasury;
         tToken = _tToken;
         globalCeiling = _globalCeiling;
@@ -65,6 +65,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         whenNotPaused
         nonReentrant
         onlyOwner
+        returns (uint256)
     {
         if (amount == 0) revert EmptySend();
         if (globalDepositValue >= globalCeiling) revert CeilingReached();
@@ -78,6 +79,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         creds.mint(customer, adjustedAmount);
         credit.createCREDUT(customer, adjustedAmount);
         emit Deposit(customer, adjustedAmount);
+        return creds.balanceOf(customer);
     }
 
     function partialWithdraw(uint256 tokenId, uint256 amount)
@@ -101,7 +103,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         onlyOwner
     {
         address customer = msg.sender;
-        uint256 amount = credut.deleteCREDIT(customer, tokenId);
+        uint256 amount = credit.deleteCREDIT(customer, tokenId);
         globalDepositValue -= amount;
         creds.burn(customer, amount);
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
@@ -126,7 +128,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     {
         if (emergencyStatus == emergencyNotActive) revert EmergencyNotActive();
         address customer = msg.sender;
-        uint256 amount = credut.deleteCREDIT(customer, tokenId);
+        uint256 amount = credit.deleteCREDIT(customer, tokenId);
         globalDepositValue -= amount;
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit Withdrawal(customer, amount);

@@ -6,6 +6,8 @@ interface ICREDS {
 
     function burn(address customer, uint256 amount) external;
 
+    function balanceOf(address account) external view returns (uint256);
+
     function transferFrom(
         address customer,
         address to,
