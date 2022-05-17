@@ -50,8 +50,6 @@ contract HedgeHog is Ownable {
         ERC20(tToken).approve(address(this), type(uint256).max);
     }
 
-    uint256 public globalAmount;
-
     function depositThenRecieveCredsAndCredit(
         uint256 _amount,
         uint256 minTYSRate
@@ -63,8 +61,8 @@ contract HedgeHog is Ownable {
             minTYSRate,
             DEADLINE
         );
-        uint256 recievedTokens = ERC20(tToken).balanceOf(address(this));
-        return tokenmanager.deposit(recievedTokens);
+        uint256 tempusTokens = ERC20(tToken).balanceOf(address(this));
+        return tokenmanager.deposit(tempusTokens);
     }
 
     // function rolloverAfterMaturity() external onlyOwner {}
