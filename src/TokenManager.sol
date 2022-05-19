@@ -20,23 +20,21 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     error FeeTooLow();
     error FeeTooHigh();
 
-    ICREDS public creds;
-    ICREDIT public credit;
+    ICREDS private creds;
+    ICREDIT private credit;
 
     uint256 public globalDepositValue;
     uint256 public globalCeiling;
-    uint256 public feePercentage = 5; //5% default
+    uint256 public feePercentage = 30; //0.3% default
+    uint256 private constant BASIS_POINTS = 10_000;
     uint256 public feeToTransfer;
 
     uint256 public emergencyStatus = 1; //inactive by default
     uint256 private immutable emergencyNotActive = 1;
     uint256 private immutable emergencyActive = 2;
 
-    address payable public treasury;
+    address payable private treasury;
     address public tToken;
-
-    uint256 private constant MINIMUM_FEE_PERCENTAGE = 1;
-    uint256 private constant MAXIMUM_FEE_PERCENTAGE = 10;
 
     event Deposit(address indexed from, uint256 amount);
     event Withdrawal(address indexed to, uint256 amount);
@@ -64,7 +62,6 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         external
         whenNotPaused
         nonReentrant
-        onlyOwner
         returns (uint256)
     {
         if (amount == 0) revert EmptySend();
@@ -86,7 +83,6 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         external
         whenNotPaused
         nonReentrant
-        onlyOwner
     {
         address customer = msg.sender;
         credit.subtractValueFromCREDIT(customer, tokenId, amount);
@@ -100,7 +96,6 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         external
         whenNotPaused
         nonReentrant
-        onlyOwner
     {
         address customer = msg.sender;
         uint256 amount = credit.deleteCREDIT(customer, tokenId);
@@ -135,12 +130,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
     }
 
     function _calculateFee(uint256 msgValue) internal view returns (uint256) {
-        uint256 adjustedMsgValue;
-        if (feePercentage == 1) {
-            adjustedMsgValue = msgValue / 100;
-            return adjustedMsgValue;
-        }
-        adjustedMsgValue = (msgValue * feePercentage) / 100;
+        uint256 adjustedMsgValue = (msgValue * feePercentage) / BASIS_POINTS;
         return adjustedMsgValue;
     }
 
@@ -157,14 +147,6 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         uint256 allFees = feeToTransfer;
         feeToTransfer -= allFees;
         ERC20(tToken).safeTransferFrom(address(this), treasury, allFees);
-    }
-
-    function setFeePercentage(uint256 _feePercentage) external onlyOwner {
-        if (_feePercentage < MINIMUM_FEE_PERCENTAGE) revert FeeTooLow();
-
-        if (_feePercentage > MAXIMUM_FEE_PERCENTAGE) revert FeeTooHigh();
-
-        feePercentage = _feePercentage;
     }
 
     function setTempusTokenAddress(address _tToken) external onlyOwner {
