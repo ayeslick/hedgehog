@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.13;
+pragma solidity >=0.8.13;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
@@ -74,7 +74,28 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         globalDepositValue += adjustedAmount;
         ERC20(tToken).safeTransferFrom(customer, address(this), amount);
         creds.mint(customer, adjustedAmount);
-        credit.createCREDUT(customer, adjustedAmount);
+        credit.createCREDIT(customer, adjustedAmount);
+        emit Deposit(customer, adjustedAmount);
+        return creds.balanceOf(customer);
+    }
+
+    function addToCredit(uint256 tokenId, uint256 amount)
+        external
+        whenNotPaused
+        nonReentrant
+        returns (uint256)
+    {
+        if (amount == 0) revert EmptySend();
+        if (globalDepositValue >= globalCeiling) revert CeilingReached();
+
+        address customer = msg.sender;
+        uint256 adjustedFee = _calculateFee(amount);
+        feeToTransfer += adjustedFee;
+        uint256 adjustedAmount = amount - adjustedFee;
+        globalDepositValue += adjustedAmount;
+        ERC20(tToken).safeTransferFrom(customer, address(this), amount);
+        credit.addValueToCREDIT(tokenId, adjustedAmount);
+        creds.mint(customer, adjustedAmount);
         emit Deposit(customer, adjustedAmount);
         return creds.balanceOf(customer);
     }
@@ -83,6 +104,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         external
         whenNotPaused
         nonReentrant
+        returns (uint256)
     {
         address customer = msg.sender;
         credit.subtractValueFromCREDIT(customer, tokenId, amount);
@@ -90,6 +112,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         globalDepositValue -= amount;
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
         emit SubtractFromCredut(customer, tokenId, amount);
+        return creds.balanceOf(customer);
     }
 
     function claimAllUnderlying(uint256 tokenId)

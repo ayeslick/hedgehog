@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.13;
+pragma solidity >=0.8.13;
 
 interface ICREDIT {
     function createCREDUT(address customer, uint256 amount) external;
+
+    function addValueToCREDIT(uint256 tokenId, uint256 amount) external;
 
     function subtractValueFromCREDIT(
         address customer,
