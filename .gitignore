@@ -2,3 +2,4 @@ out/
 cache/
 node_modules/
 .env
+///used node version 12.18.3 for development

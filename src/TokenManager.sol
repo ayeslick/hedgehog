@@ -38,7 +38,8 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
 
     event Deposit(address indexed from, uint256 amount);
     event Withdrawal(address indexed to, uint256 amount);
-    event SubtractFromCredut(
+    event AddToCredit(address customer, uint256 amount);
+    event SubtractFromCredit(
         address indexed customer,
         uint256 tokenId,
         uint256 amount
@@ -96,7 +97,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         ERC20(tToken).safeTransferFrom(customer, address(this), amount);
         credit.addValueToCREDIT(tokenId, adjustedAmount);
         creds.mint(customer, adjustedAmount);
-        emit Deposit(customer, adjustedAmount);
+        emit AddToCredit(customer, amount);
         return creds.balanceOf(customer);
     }
 
@@ -111,7 +112,7 @@ contract TokenManagerETH is Ownable, Pausable, ReentrancyGuard {
         creds.burn(customer, amount);
         globalDepositValue -= amount;
         ERC20(tToken).safeTransferFrom(address(this), customer, amount);
-        emit SubtractFromCredut(customer, tokenId, amount);
+        emit SubtractFromCredit(customer, tokenId, amount);
         return creds.balanceOf(customer);
     }
 
