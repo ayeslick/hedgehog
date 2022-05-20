@@ -1,0 +1,1456 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "principalsStaked",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "yieldsStaked",
+          "type": "uint256"
+        }
+      ],
+      "name": "getExpectedBPTInGivenTokensOut",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "lpTokens",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "amountsIn",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "getExpectedLPTokensForTokensIn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "yieldShareIn",
+          "type": "bool"
+        }
+      ],
+      "name": "getExpectedReturnGivenIn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "bptAmountIn",
+          "type": "uint256"
+        }
+      ],
+      "name": "getExpectedTokensOutGivenBPTIn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "principals",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "yields",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPoolId",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "principals",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "yields",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "threshold",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSwapAmountToEndWithEqualShares",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "yieldsIn",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getVault",
+      "outputs": [
+        {
+          "internalType": "contract IVault",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tempusPool",
+      "outputs": [
+        {
+          "internalType": "contract ITempusPool",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "/home/tst/work/hedgehog/src/interfaces/ITempusAMM.sol",
+    "id": 5659,
+    "exportedSymbols": {
+      "IERC20": [
+        2300
+      ],
+      "IOwnable": [
+        5492
+      ],
+      "IPoolShare": [
+        5526
+      ],
+      "ITempusAMM": [
+        5658
+      ],
+      "ITempusFees": [
+        5719
+      ],
+      "ITempusPool": [
+        5957
+      ],
+      "IVault": [
+        6066
+      ],
+      "IVersioned": [
+        6085
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "37:3190:26",
+    "nodes": [
+      {
+        "id": 5555,
+        "nodeType": "PragmaDirective",
+        "src": "37:24:26",
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 5556,
+        "nodeType": "ImportDirective",
+        "src": "63:22:26",
+        "absolutePath": "/home/tst/work/hedgehog/src/interfaces/IVault.sol",
+        "file": "./IVault.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 5659,
+        "sourceUnit": 6067,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 5557,
+        "nodeType": "ImportDirective",
+        "src": "86:27:26",
+        "absolutePath": "/home/tst/work/hedgehog/src/interfaces/ITempusPool.sol",
+        "file": "./ITempusPool.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 5659,
+        "sourceUnit": 5958,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 5658,
+        "nodeType": "ContractDefinition",
+        "src": "115:3111:26",
+        "nodes": [
+          {
+            "id": 5560,
+            "nodeType": "EnumDefinition",
+            "src": "142:71:26",
+            "canonicalName": "ITempusAMM.JoinKind",
+            "members": [
+              {
+                "id": 5558,
+                "name": "INIT",
+                "nameLocation": "166:4:26",
+                "nodeType": "EnumValue",
+                "src": "166:4:26"
+              },
+              {
+                "id": 5559,
+                "name": "EXACT_TOKENS_IN_FOR_BPT_OUT",
+                "nameLocation": "180:27:26",
+                "nodeType": "EnumValue",
+                "src": "180:27:26"
+              }
+            ],
+            "name": "JoinKind",
+            "nameLocation": "147:8:26"
+          },
+          {
+            "id": 5563,
+            "nodeType": "EnumDefinition",
+            "src": "218:94:26",
+            "canonicalName": "ITempusAMM.ExitKind",
+            "members": [
+              {
+                "id": 5561,
+                "name": "EXACT_BPT_IN_FOR_TOKENS_OUT",
+                "nameLocation": "242:27:26",
+                "nodeType": "EnumValue",
+                "src": "242:27:26"
+              },
+              {
+                "id": 5562,
+                "name": "BPT_IN_FOR_EXACT_TOKENS_OUT",
+                "nameLocation": "279:27:26",
+                "nodeType": "EnumValue",
+                "src": "279:27:26"
+              }
+            ],
+            "name": "ExitKind",
+            "nameLocation": "223:8:26"
+          },
+          {
+            "id": 5569,
+            "nodeType": "FunctionDefinition",
+            "src": "318:51:26",
+            "functionSelector": "8d928af8",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getVault",
+            "nameLocation": "327:8:26",
+            "parameters": {
+              "id": 5564,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "335:2:26"
+            },
+            "returnParameters": {
+              "id": 5568,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5567,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5569,
+                  "src": "361:6:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVault_$6066",
+                    "typeString": "contract IVault"
+                  },
+                  "typeName": {
+                    "id": 5566,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 5565,
+                      "name": "IVault",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6066,
+                      "src": "361:6:26"
+                    },
+                    "referencedDeclaration": 6066,
+                    "src": "361:6:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVault_$6066",
+                      "typeString": "contract IVault"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "360:8:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5574,
+            "nodeType": "FunctionDefinition",
+            "src": "375:53:26",
+            "functionSelector": "38fff2d0",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPoolId",
+            "nameLocation": "384:9:26",
+            "parameters": {
+              "id": 5570,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "393:2:26"
+            },
+            "returnParameters": {
+              "id": 5573,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5572,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5574,
+                  "src": "419:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5571,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "419:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "418:9:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5580,
+            "nodeType": "FunctionDefinition",
+            "src": "434:58:26",
+            "functionSelector": "f1563de9",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tempusPool",
+            "nameLocation": "443:10:26",
+            "parameters": {
+              "id": 5575,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "453:2:26"
+            },
+            "returnParameters": {
+              "id": 5579,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5578,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5580,
+                  "src": "479:11:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITempusPool_$5957",
+                    "typeString": "contract ITempusPool"
+                  },
+                  "typeName": {
+                    "id": 5577,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 5576,
+                      "name": "ITempusPool",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 5957,
+                      "src": "479:11:26"
+                    },
+                    "referencedDeclaration": 5957,
+                    "src": "479:11:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITempusPool_$5957",
+                      "typeString": "contract ITempusPool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "478:13:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5587,
+            "nodeType": "FunctionDefinition",
+            "src": "498:60:26",
+            "functionSelector": "70a08231",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nameLocation": "507:9:26",
+            "parameters": {
+              "id": 5583,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5582,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5587,
+                  "src": "517:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5581,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "517:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "516:9:26"
+            },
+            "returnParameters": {
+              "id": 5586,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5585,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5587,
+                  "src": "549:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5584,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "549:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "548:9:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5598,
+            "nodeType": "FunctionDefinition",
+            "src": "564:127:26",
+            "functionSelector": "23b872dd",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferFrom",
+            "nameLocation": "573:12:26",
+            "parameters": {
+              "id": 5594,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5589,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nameLocation": "603:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5598,
+                  "src": "595:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5588,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "595:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5591,
+                  "mutability": "mutable",
+                  "name": "recipient",
+                  "nameLocation": "627:9:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5598,
+                  "src": "619:17:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5590,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "619:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5593,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "654:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5598,
+                  "src": "646:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5592,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "646:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "585:81:26"
+            },
+            "returnParameters": {
+              "id": 5597,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5596,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5598,
+                  "src": "685:4:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5595,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "685:4:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "684:6:26"
+            },
+            "scope": 5658,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5608,
+            "nodeType": "FunctionDefinition",
+            "src": "975:125:26",
+            "documentation": {
+              "id": 5599,
+              "nodeType": "StructuredDocumentation",
+              "src": "697:273:26",
+              "text": "Calculates the expected returned swap amount\n @param amount The given input amount of tokens\n @param yieldShareIn Specifies whether to calculate the swap from TYS to TPS (if true) or from TPS to TYS\n @return The expected returned amount of outToken"
+            },
+            "functionSelector": "fecb0003",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExpectedReturnGivenIn",
+            "nameLocation": "984:24:26",
+            "parameters": {
+              "id": 5604,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5601,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1017:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5608,
+                  "src": "1009:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5600,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1009:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5603,
+                  "mutability": "mutable",
+                  "name": "yieldShareIn",
+                  "nameLocation": "1030:12:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5608,
+                  "src": "1025:17:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5602,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1025:4:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1008:35:26"
+            },
+            "returnParameters": {
+              "id": 5607,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5606,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5608,
+                  "src": "1091:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5605,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1091:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1090:9:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5622,
+            "nodeType": "FunctionDefinition",
+            "src": "1682:184:26",
+            "documentation": {
+              "id": 5609,
+              "nodeType": "StructuredDocumentation",
+              "src": "1106:571:26",
+              "text": "@dev Returns amount that user needs to swap to end up with almost the same amounts of Principals and Yields\n @param principals User's Principals balance\n @param yields User's Yields balance\n @param threshold Maximum difference between final balances of Principals and Yields\n @return amountIn Amount of Principals or Yields that user needs to swap to end with almost equal amounts\n @return yieldsIn Specifies the \"direction\" of the swap -\n         whether Yields should be swapped for Principals (yieldsIn=true) or vice versa"
+            },
+            "functionSelector": "7b62525f",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSwapAmountToEndWithEqualShares",
+            "nameLocation": "1691:33:26",
+            "parameters": {
+              "id": 5616,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5611,
+                  "mutability": "mutable",
+                  "name": "principals",
+                  "nameLocation": "1742:10:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5622,
+                  "src": "1734:18:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5610,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1734:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5613,
+                  "mutability": "mutable",
+                  "name": "yields",
+                  "nameLocation": "1770:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5622,
+                  "src": "1762:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5612,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1762:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5615,
+                  "mutability": "mutable",
+                  "name": "threshold",
+                  "nameLocation": "1794:9:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5622,
+                  "src": "1786:17:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5614,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1786:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1724:85:26"
+            },
+            "returnParameters": {
+              "id": 5621,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5618,
+                  "mutability": "mutable",
+                  "name": "amountIn",
+                  "nameLocation": "1841:8:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5622,
+                  "src": "1833:16:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5617,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1833:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5620,
+                  "mutability": "mutable",
+                  "name": "yieldsIn",
+                  "nameLocation": "1856:8:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5622,
+                  "src": "1851:13:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5619,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1851:4:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1832:33:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5632,
+            "nodeType": "FunctionDefinition",
+            "src": "2132:144:26",
+            "documentation": {
+              "id": 5623,
+              "nodeType": "StructuredDocumentation",
+              "src": "1872:255:26",
+              "text": "@dev queries exiting TempusAMM with exact BPT tokens in\n @param bptAmountIn amount of LP tokens in\n @return principals Amount of principals that user would receive back\n @return yields Amount of yields that user would receive back"
+            },
+            "functionSelector": "d2e9581e",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExpectedTokensOutGivenBPTIn",
+            "nameLocation": "2141:30:26",
+            "parameters": {
+              "id": 5626,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5625,
+                  "mutability": "mutable",
+                  "name": "bptAmountIn",
+                  "nameLocation": "2180:11:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5632,
+                  "src": "2172:19:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5624,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2172:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2171:21:26"
+            },
+            "returnParameters": {
+              "id": 5631,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5628,
+                  "mutability": "mutable",
+                  "name": "principals",
+                  "nameLocation": "2248:10:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5632,
+                  "src": "2240:18:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5627,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2240:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5630,
+                  "mutability": "mutable",
+                  "name": "yields",
+                  "nameLocation": "2268:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5632,
+                  "src": "2260:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5629,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2260:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2239:36:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5642,
+            "nodeType": "FunctionDefinition",
+            "src": "2533:151:26",
+            "documentation": {
+              "id": 5633,
+              "nodeType": "StructuredDocumentation",
+              "src": "2282:246:26",
+              "text": "@dev queries exiting TempusAMM with exact tokens out\n @param principalsStaked amount of Principals to withdraw\n @param yieldsStaked amount of Yields to withdraw\n @return lpTokens Amount of Lp tokens that user would redeem"
+            },
+            "functionSelector": "b8956df4",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExpectedBPTInGivenTokensOut",
+            "nameLocation": "2542:30:26",
+            "parameters": {
+              "id": 5638,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5635,
+                  "mutability": "mutable",
+                  "name": "principalsStaked",
+                  "nameLocation": "2590:16:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5642,
+                  "src": "2582:24:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5634,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2582:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5637,
+                  "mutability": "mutable",
+                  "name": "yieldsStaked",
+                  "nameLocation": "2624:12:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5642,
+                  "src": "2616:20:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5636,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2616:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2572:70:26"
+            },
+            "returnParameters": {
+              "id": 5641,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5640,
+                  "mutability": "mutable",
+                  "name": "lpTokens",
+                  "nameLocation": "2674:8:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5642,
+                  "src": "2666:16:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5639,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2666:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2665:18:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5651,
+            "nodeType": "FunctionDefinition",
+            "src": "2875:124:26",
+            "documentation": {
+              "id": 5643,
+              "nodeType": "StructuredDocumentation",
+              "src": "2690:180:26",
+              "text": "@dev queries joining TempusAMM with exact tokens in\n @param amountsIn amount of tokens to be added to the pool\n @return amount of LP tokens that could be received"
+            },
+            "functionSelector": "09dc1252",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getExpectedLPTokensForTokensIn",
+            "nameLocation": "2884:30:26",
+            "parameters": {
+              "id": 5647,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5646,
+                  "mutability": "mutable",
+                  "name": "amountsIn",
+                  "nameLocation": "2932:9:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5651,
+                  "src": "2915:26:26",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 5644,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "2915:7:26",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 5645,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2915:9:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2914:28:26"
+            },
+            "returnParameters": {
+              "id": 5650,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5649,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5651,
+                  "src": "2990:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5648,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2990:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2989:9:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 5657,
+            "nodeType": "FunctionDefinition",
+            "src": "3173:51:26",
+            "documentation": {
+              "id": 5652,
+              "nodeType": "StructuredDocumentation",
+              "src": "3005:163:26",
+              "text": "@dev This function returns the appreciation of one BPT relative to the\n underlying tokens. This starts at 1 when the pool is created and grows over time"
+            },
+            "functionSelector": "679aefce",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getRate",
+            "nameLocation": "3182:7:26",
+            "parameters": {
+              "id": 5653,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3189:2:26"
+            },
+            "returnParameters": {
+              "id": 5656,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5655,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5657,
+                  "src": "3215:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5654,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3215:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3214:9:26"
+            },
+            "scope": 5658,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITempusAMM",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          5658
+        ],
+        "name": "ITempusAMM",
+        "nameLocation": "125:10:26",
+        "scope": 5659,
+        "usedErrors": []
+      }
+    ],
+    "license": "BUSL-1.1"
+  }
+}
