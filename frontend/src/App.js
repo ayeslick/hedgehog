@@ -46,7 +46,23 @@ function App() {
     }
   }
 
-  const createCredit = () => { }
+  const createCredit = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        //dynamically pull the contents from the local blockchain
+        //and call the functions and display the results
+      } else {
+        console.log("Ethereum object does not exist");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
 
   const connectWalletButton = () => {
     return (
