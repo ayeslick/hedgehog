@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.13;
+pragma solidity >=0.8.13;
 
 //import IERC20
 import "solmate/tokens/ERC20.sol";
@@ -51,12 +51,12 @@ contract HedgeHog is Ownable {
     }
 
     function depositThenRecieveCredsAndCredit(
-        uint256 _amount,
+        uint256 amount,
         uint256 minTYSRate
     ) external returns (uint256) {
         TEMPUS_CONTROLLER.depositAndFix(
             TEMPUS_AMM,
-            _amount,
+            amount,
             true,
             minTYSRate,
             DEADLINE
@@ -65,5 +65,9 @@ contract HedgeHog is Ownable {
         return tokenmanager.deposit(tempusTokens);
     }
 
-    // function rolloverAfterMaturity() external onlyOwner {}
+    function depositThenAdd(uint256 amount) external {}
+
+    function depositThenRetrievePartialUnderlying(uint256 amount) external {}
+
+    function depositThenRetrieveAllUnderlying(uint256 amount) external {}
 }
