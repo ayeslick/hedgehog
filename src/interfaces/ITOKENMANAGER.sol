@@ -1,12 +1,16 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.13;
+pragma solidity >=0.8.13;
 
 interface ITOKENMANAGER {
     function deposit(uint256 amount) external returns (uint256);
 
-    function partialWithdraw(uint256 tokenId, uint256 amount) external;
+    function increaseCredit(uint256 tokenId, uint256 amount)
+        external
+        returns (uint256);
 
-    function claimAllUnderlying(uint256 tokenId) external;
+    function decreaseCredit(uint256 tokenId, uint256 amount) external;
+
+    function claimUnderlying(uint256 tokenId) external;
 
     function transferOwnership(address newOwner) external;
 }

@@ -3,7 +3,12 @@ import './App.css';
 import HedgeHog from "./contracts/HedgeHog.json";
 import { ethers } from 'ethers';
 
-const abi = HedgeHog.abi;
+const hhAddress = "0x5133bbdfcca3eb4f739d599ee4ec45cbcd0e16c5";
+const abi = {
+  abi: [
+    "function depositThenRecieveCredsAndCredit(uint256 amount) external"
+  ],
+};
 
 function App() {
 
@@ -51,10 +56,19 @@ function App() {
       const { ethereum } = window;
 
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
+        const provider = new ethers.providers.JsonRpcProvider();
         const signer = provider.getSigner();
+        const hhContract = new ethers.Contract(hhAddress, abi.abi, signer);
+
+
+        const hhTx = await hhContract.depositThenRecieveCredsAndCredit(ethers.utils.parseUnits("0.5", 18), {
+          gasLimit: 100000,
+        });
         //dynamically pull the contents from the local blockchain
         //and call the functions and display the results
+        console.log("Mining... please wait");
+        await hhTx.wait();
+
       } else {
         console.log("Ethereum object does not exist");
       }
@@ -87,6 +101,7 @@ function App() {
   return (
     <div className='main-app'>
       <h1>HedgeHog</h1>
+      <input type="text" id="candidate" />
       <div>
         {currentAccount ? createCreditButton() : connectWalletButton()}
       </div>
