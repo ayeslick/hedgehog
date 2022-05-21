@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.13;
+pragma solidity >=0.8.13;
 
-//CREDUT NFT
+//CREDIT NFT
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -15,7 +15,7 @@ contract TempusCredit is ERC721("Tempus DAI Credit", "tDAICREDIT"), Ownable {
     //NFTID => value stored within NFT
     mapping(uint256 => uint256) public depositValue;
 
-    event AddValue(address indexed customer, uint256 tokenId, uint256 amount);
+    event AddValue(uint256 tokenId, uint256 amount);
     event SubtractValue(
         address indexed customer,
         uint256 tokenId,
@@ -28,6 +28,14 @@ contract TempusCredit is ERC721("Tempus DAI Credit", "tDAICREDIT"), Ownable {
         uint256 tokenId = ++_tokenId;
         depositValue[tokenId] = amount;
         _safeMint(customer, tokenId);
+    }
+
+    function addValueToCREDIT(uint256 tokenId, uint256 amount)
+        external
+        onlyOwner
+    {
+        depositValue[tokenId] += amount;
+        emit AddValue(tokenId, amount);
     }
 
     function subtractValueFromCREDIT(

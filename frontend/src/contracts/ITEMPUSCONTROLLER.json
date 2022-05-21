@@ -1,0 +1,1528 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract ITempusAMM",
+          "name": "tempusAMM",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isBackingToken",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minTYSRate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        }
+      ],
+      "name": "depositAndFix",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "/home/tst/work/hedgehog/src/HedgeHog.sol",
+    "id": 4538,
+    "exportedSymbols": {
+      "Context": [
+        3644
+      ],
+      "ERC20": [
+        4301
+      ],
+      "HedgeHog": [
+        4537
+      ],
+      "IERC20": [
+        2300
+      ],
+      "IOwnable": [
+        5492
+      ],
+      "IPoolShare": [
+        5526
+      ],
+      "ITEMPUSCONTROLLER": [
+        4448
+      ],
+      "ITOKENMANAGER": [
+        5553
+      ],
+      "ITempusAMM": [
+        5658
+      ],
+      "ITempusFees": [
+        5719
+      ],
+      "ITempusPool": [
+        5957
+      ],
+      "IVault": [
+        6066
+      ],
+      "IVersioned": [
+        6085
+      ],
+      "Ownable": [
+        2130
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:2109:17",
+    "nodes": [
+      {
+        "id": 4429,
+        "nodeType": "PragmaDirective",
+        "src": "32:24:17",
+        "literals": [
+          "solidity",
+          "=",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 4430,
+        "nodeType": "ImportDirective",
+        "src": "74:34:17",
+        "absolutePath": "/home/tst/work/hedgehog/lib/solmate/src/tokens/ERC20.sol",
+        "file": "solmate/tokens/ERC20.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 4538,
+        "sourceUnit": 4302,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 4431,
+        "nodeType": "ImportDirective",
+        "src": "127:52:17",
+        "absolutePath": "/home/tst/work/hedgehog/lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        "file": "@openzeppelin/contracts/access/Ownable.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 4538,
+        "sourceUnit": 2131,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 4432,
+        "nodeType": "ImportDirective",
+        "src": "200:40:17",
+        "absolutePath": "/home/tst/work/hedgehog/src/interfaces/ITOKENMANAGER.sol",
+        "file": "./interfaces/ITOKENMANAGER.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 4538,
+        "sourceUnit": 5554,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 4433,
+        "nodeType": "ImportDirective",
+        "src": "241:37:17",
+        "absolutePath": "/home/tst/work/hedgehog/src/interfaces/ITempusAMM.sol",
+        "file": "./interfaces/ITempusAMM.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 4538,
+        "sourceUnit": 5659,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 4448,
+        "nodeType": "ContractDefinition",
+        "src": "280:241:17",
+        "nodes": [
+          {
+            "id": 4447,
+            "nodeType": "FunctionDefinition",
+            "src": "314:205:17",
+            "functionSelector": "507a3baf",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositAndFix",
+            "nameLocation": "323:13:17",
+            "parameters": {
+              "id": 4445,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4436,
+                  "mutability": "mutable",
+                  "name": "tempusAMM",
+                  "nameLocation": "357:9:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4447,
+                  "src": "346:20:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+                    "typeString": "contract ITempusAMM"
+                  },
+                  "typeName": {
+                    "id": 4435,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 4434,
+                      "name": "ITempusAMM",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 5658,
+                      "src": "346:10:17"
+                    },
+                    "referencedDeclaration": 5658,
+                    "src": "346:10:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+                      "typeString": "contract ITempusAMM"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4438,
+                  "mutability": "mutable",
+                  "name": "tokenAmount",
+                  "nameLocation": "384:11:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4447,
+                  "src": "376:19:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4437,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "376:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4440,
+                  "mutability": "mutable",
+                  "name": "isBackingToken",
+                  "nameLocation": "410:14:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4447,
+                  "src": "405:19:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4439,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "405:4:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4442,
+                  "mutability": "mutable",
+                  "name": "minTYSRate",
+                  "nameLocation": "442:10:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4447,
+                  "src": "434:18:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4441,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "434:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4444,
+                  "mutability": "mutable",
+                  "name": "deadline",
+                  "nameLocation": "495:8:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4447,
+                  "src": "487:16:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4443,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "487:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "336:173:17"
+            },
+            "returnParameters": {
+              "id": 4446,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "518:0:17"
+            },
+            "scope": 4448,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITEMPUSCONTROLLER",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          4448
+        ],
+        "name": "ITEMPUSCONTROLLER",
+        "nameLocation": "290:17:17",
+        "scope": 4538,
+        "usedErrors": []
+      },
+      {
+        "id": 4537,
+        "nodeType": "ContractDefinition",
+        "src": "523:1617:17",
+        "nodes": [
+          {
+            "id": 4452,
+            "nodeType": "ErrorDefinition",
+            "src": "558:23:17",
+            "errorSelector": "81b5ad68",
+            "name": "NotEnoughFunds",
+            "nameLocation": "564:14:17",
+            "parameters": {
+              "id": 4451,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "578:2:17"
+            }
+          },
+          {
+            "id": 4455,
+            "nodeType": "VariableDeclaration",
+            "src": "1075:45:17",
+            "constant": false,
+            "mutability": "immutable",
+            "name": "tokenmanager",
+            "nameLocation": "1108:12:17",
+            "scope": 4537,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+              "typeString": "contract ITOKENMANAGER"
+            },
+            "typeName": {
+              "id": 4454,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 4453,
+                "name": "ITOKENMANAGER",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 5553,
+                "src": "1075:13:17"
+              },
+              "referencedDeclaration": 5553,
+              "src": "1075:13:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                "typeString": "contract ITOKENMANAGER"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 4461,
+            "nodeType": "VariableDeclaration",
+            "src": "1126:125:17",
+            "constant": true,
+            "mutability": "constant",
+            "name": "TEMPUS_CONTROLLER",
+            "nameLocation": "1162:17:17",
+            "scope": 4537,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ITEMPUSCONTROLLER_$4448",
+              "typeString": "contract ITEMPUSCONTROLLER"
+            },
+            "typeName": {
+              "id": 4457,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 4456,
+                "name": "ITEMPUSCONTROLLER",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 4448,
+                "src": "1126:17:17"
+              },
+              "referencedDeclaration": 4448,
+              "src": "1126:17:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITEMPUSCONTROLLER_$4448",
+                "typeString": "contract ITEMPUSCONTROLLER"
+              }
+            },
+            "value": {
+              "arguments": [
+                {
+                  "hexValue": "307864423566443036373865454438323234366235393964613642433336423536313537453462654438",
+                  "id": 4459,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "number",
+                  "lValueRequested": false,
+                  "nodeType": "Literal",
+                  "src": "1208:42:17",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "value": "0xdB5fD0678eED82246b599da6BC36B56157E4beD8"
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                ],
+                "id": 4458,
+                "name": "ITEMPUSCONTROLLER",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 4448,
+                "src": "1190:17:17",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_ITEMPUSCONTROLLER_$4448_$",
+                  "typeString": "type(contract ITEMPUSCONTROLLER)"
+                }
+              },
+              "id": 4460,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "1190:61:17",
+              "tryCall": false,
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITEMPUSCONTROLLER_$4448",
+                "typeString": "contract ITEMPUSCONTROLLER"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 4464,
+            "nodeType": "VariableDeclaration",
+            "src": "1257:68:17",
+            "constant": false,
+            "mutability": "mutable",
+            "name": "tToken",
+            "nameLocation": "1274:6:17",
+            "scope": 4537,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 4462,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "1257:7:17",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": {
+              "hexValue": "307866453933326430306239383538433432313038333738303533433131624537393635363131364146",
+              "id": 4463,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1283:42:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              },
+              "value": "0xfE932d00b9858C42108378053C11bE79656116AF"
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 4470,
+            "nodeType": "VariableDeclaration",
+            "src": "1331:104:17",
+            "constant": true,
+            "mutability": "constant",
+            "name": "TEMPUS_AMM",
+            "nameLocation": "1360:10:17",
+            "scope": 4537,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+              "typeString": "contract ITempusAMM"
+            },
+            "typeName": {
+              "id": 4466,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 4465,
+                "name": "ITempusAMM",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 5658,
+                "src": "1331:10:17"
+              },
+              "referencedDeclaration": 5658,
+              "src": "1331:10:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+                "typeString": "contract ITempusAMM"
+              }
+            },
+            "value": {
+              "arguments": [
+                {
+                  "hexValue": "307837634130343331343343366533306244413238644463373332326437393531463533384437356538",
+                  "id": 4468,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "number",
+                  "lValueRequested": false,
+                  "nodeType": "Literal",
+                  "src": "1392:42:17",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "value": "0x7cA043143C6e30bDA28dDc7322d7951F538D75e8"
+                }
+              ],
+              "expression": {
+                "argumentTypes": [
+                  {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                ],
+                "id": 4467,
+                "name": "ITempusAMM",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 5658,
+                "src": "1381:10:17",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_ITempusAMM_$5658_$",
+                  "typeString": "type(contract ITempusAMM)"
+                }
+              },
+              "id": 4469,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "typeConversion",
+              "lValueRequested": false,
+              "names": [],
+              "nodeType": "FunctionCall",
+              "src": "1381:54:17",
+              "tryCall": false,
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+                "typeString": "contract ITempusAMM"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 4473,
+            "nodeType": "VariableDeclaration",
+            "src": "1441:53:17",
+            "constant": true,
+            "mutability": "constant",
+            "name": "DEADLINE",
+            "nameLocation": "1467:8:17",
+            "scope": 4537,
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 4471,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "1441:7:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "38363430303030303030303030303030",
+              "id": 4472,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1478:16:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_8640000000000000_by_1",
+                "typeString": "int_const 8640000000000000"
+              },
+              "value": "8640000000000000"
+            },
+            "visibility": "internal"
+          },
+          {
+            "id": 4499,
+            "nodeType": "FunctionDefinition",
+            "src": "1501:151:17",
+            "body": {
+              "id": 4498,
+              "nodeType": "Block",
+              "src": "1542:110:17",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 4481,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 4479,
+                      "name": "tokenmanager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4455,
+                      "src": "1552:12:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                        "typeString": "contract ITOKENMANAGER"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 4480,
+                      "name": "_tokenmanager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4476,
+                      "src": "1567:13:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                        "typeString": "contract ITOKENMANAGER"
+                      }
+                    },
+                    "src": "1552:28:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                      "typeString": "contract ITOKENMANAGER"
+                    }
+                  },
+                  "id": 4482,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1552:28:17"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 4489,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -28,
+                            "src": "1620:4:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_HedgeHog_$4537",
+                              "typeString": "contract HedgeHog"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_HedgeHog_$4537",
+                              "typeString": "contract HedgeHog"
+                            }
+                          ],
+                          "id": 4488,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "1612:7:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 4487,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "1612:7:17",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 4490,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1612:13:17",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "id": 4493,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1632:7:17",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_uint256_$",
+                                "typeString": "type(uint256)"
+                              },
+                              "typeName": {
+                                "id": 4492,
+                                "name": "uint256",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "1632:7:17",
+                                "typeDescriptions": {}
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_type$_t_uint256_$",
+                                "typeString": "type(uint256)"
+                              }
+                            ],
+                            "id": 4491,
+                            "name": "type",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -27,
+                            "src": "1627:4:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_metatype_pure$__$returns$__$",
+                              "typeString": "function () pure"
+                            }
+                          },
+                          "id": 4494,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1627:13:17",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_meta_type_t_uint256",
+                            "typeString": "type(uint256)"
+                          }
+                        },
+                        "id": 4495,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "memberName": "max",
+                        "nodeType": "MemberAccess",
+                        "src": "1627:17:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 4484,
+                            "name": "tToken",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4464,
+                            "src": "1596:6:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 4483,
+                          "name": "ERC20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4301,
+                          "src": "1590:5:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC20_$4301_$",
+                            "typeString": "type(contract ERC20)"
+                          }
+                        },
+                        "id": 4485,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1590:13:17",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20_$4301",
+                          "typeString": "contract ERC20"
+                        }
+                      },
+                      "id": 4486,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "approve",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 4016,
+                      "src": "1590:21:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 4496,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1590:55:17",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 4497,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1590:55:17"
+                }
+              ]
+            },
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "parameters": {
+              "id": 4477,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4476,
+                  "mutability": "mutable",
+                  "name": "_tokenmanager",
+                  "nameLocation": "1527:13:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4499,
+                  "src": "1513:27:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                    "typeString": "contract ITOKENMANAGER"
+                  },
+                  "typeName": {
+                    "id": 4475,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 4474,
+                      "name": "ITOKENMANAGER",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 5553,
+                      "src": "1513:13:17"
+                    },
+                    "referencedDeclaration": 5553,
+                    "src": "1513:13:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                      "typeString": "contract ITOKENMANAGER"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1512:29:17"
+            },
+            "returnParameters": {
+              "id": 4478,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1542:0:17"
+            },
+            "scope": 4537,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "id": 4536,
+            "nodeType": "FunctionDefinition",
+            "src": "1658:417:17",
+            "body": {
+              "id": 4535,
+              "nodeType": "Block",
+              "src": "1786:289:17",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 4511,
+                        "name": "TEMPUS_AMM",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4470,
+                        "src": "1841:10:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+                          "typeString": "contract ITempusAMM"
+                        }
+                      },
+                      {
+                        "id": 4512,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4501,
+                        "src": "1865:7:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "hexValue": "74727565",
+                        "id": 4513,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1886:4:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      },
+                      {
+                        "id": 4514,
+                        "name": "minTYSRate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4503,
+                        "src": "1904:10:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "id": 4515,
+                        "name": "DEADLINE",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4473,
+                        "src": "1928:8:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_ITempusAMM_$5658",
+                          "typeString": "contract ITempusAMM"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 4508,
+                        "name": "TEMPUS_CONTROLLER",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4461,
+                        "src": "1796:17:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ITEMPUSCONTROLLER_$4448",
+                          "typeString": "contract ITEMPUSCONTROLLER"
+                        }
+                      },
+                      "id": 4510,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "depositAndFix",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 4447,
+                      "src": "1796:31:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_ITempusAMM_$5658_$_t_uint256_$_t_bool_$_t_uint256_$_t_uint256_$returns$__$",
+                        "typeString": "function (contract ITempusAMM,uint256,bool,uint256,uint256) external"
+                      }
+                    },
+                    "id": 4516,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1796:150:17",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 4517,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1796:150:17"
+                },
+                {
+                  "assignments": [
+                    4519
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 4519,
+                      "mutability": "mutable",
+                      "name": "tempusTokens",
+                      "nameLocation": "1964:12:17",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 4535,
+                      "src": "1956:20:17",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 4518,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1956:7:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 4529,
+                  "initialValue": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 4526,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -28,
+                            "src": "2011:4:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_HedgeHog_$4537",
+                              "typeString": "contract HedgeHog"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_HedgeHog_$4537",
+                              "typeString": "contract HedgeHog"
+                            }
+                          ],
+                          "id": 4525,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "2003:7:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 4524,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2003:7:17",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 4527,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2003:13:17",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "arguments": [
+                          {
+                            "id": 4521,
+                            "name": "tToken",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4464,
+                            "src": "1985:6:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 4520,
+                          "name": "ERC20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4301,
+                          "src": "1979:5:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ERC20_$4301_$",
+                            "typeString": "type(contract ERC20)"
+                          }
+                        },
+                        "id": 4522,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1979:13:17",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20_$4301",
+                          "typeString": "contract ERC20"
+                        }
+                      },
+                      "id": 4523,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "balanceOf",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3937,
+                      "src": "1979:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) view external returns (uint256)"
+                      }
+                    },
+                    "id": 4528,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1979:38:17",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1956:61:17"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 4532,
+                        "name": "tempusTokens",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4519,
+                        "src": "2055:12:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 4530,
+                        "name": "tokenmanager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4455,
+                        "src": "2034:12:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ITOKENMANAGER_$5553",
+                          "typeString": "contract ITOKENMANAGER"
+                        }
+                      },
+                      "id": 4531,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "deposit",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5535,
+                      "src": "2034:20:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$_t_uint256_$",
+                        "typeString": "function (uint256) external returns (uint256)"
+                      }
+                    },
+                    "id": 4533,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2034:34:17",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 4507,
+                  "id": 4534,
+                  "nodeType": "Return",
+                  "src": "2027:41:17"
+                }
+              ]
+            },
+            "functionSelector": "084b09a0",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositThenRecieveCredsAndCredit",
+            "nameLocation": "1667:32:17",
+            "parameters": {
+              "id": 4504,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4501,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nameLocation": "1717:7:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4536,
+                  "src": "1709:15:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4500,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1709:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4503,
+                  "mutability": "mutable",
+                  "name": "minTYSRate",
+                  "nameLocation": "1742:10:17",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4536,
+                  "src": "1734:18:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4502,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1734:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1699:59:17"
+            },
+            "returnParameters": {
+              "id": 4507,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4506,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4536,
+                  "src": "1777:7:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4505,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1777:7:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1776:9:17"
+            },
+            "scope": 4537,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 4449,
+              "name": "Ownable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 2130,
+              "src": "544:7:17"
+            },
+            "id": 4450,
+            "nodeType": "InheritanceSpecifier",
+            "src": "544:7:17"
+          }
+        ],
+        "canonicalName": "HedgeHog",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          4537,
+          2130,
+          3644
+        ],
+        "name": "HedgeHog",
+        "nameLocation": "532:8:17",
+        "scope": 4538,
+        "usedErrors": [
+          4452
+        ]
+      }
+    ],
+    "license": "MIT"
+  }
+}

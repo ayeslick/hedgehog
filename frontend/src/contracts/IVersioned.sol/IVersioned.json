@@ -1,0 +1,265 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "major",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "minor",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint16",
+              "name": "patch",
+              "type": "uint16"
+            }
+          ],
+          "internalType": "struct IVersioned.Version",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "/home/tst/work/hedgehog/src/interfaces/IVersioned.sol",
+    "id": 6086,
+    "exportedSymbols": {
+      "IVersioned": [
+        6085
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:299:29",
+    "nodes": [
+      {
+        "id": 6068,
+        "nodeType": "PragmaDirective",
+        "src": "32:24:29",
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".0"
+        ]
+      },
+      {
+        "id": 6069,
+        "nodeType": "PragmaDirective",
+        "src": "57:19:29",
+        "literals": [
+          "abicoder",
+          "v2"
+        ]
+      },
+      {
+        "id": 6085,
+        "nodeType": "ContractDefinition",
+        "src": "104:226:29",
+        "nodes": [
+          {
+            "id": 6077,
+            "nodeType": "StructDefinition",
+            "src": "131:88:29",
+            "canonicalName": "IVersioned.Version",
+            "members": [
+              {
+                "constant": false,
+                "id": 6072,
+                "mutability": "mutable",
+                "name": "major",
+                "nameLocation": "163:5:29",
+                "nodeType": "VariableDeclaration",
+                "scope": 6077,
+                "src": "156:12:29",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 6071,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "156:6:29",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6074,
+                "mutability": "mutable",
+                "name": "minor",
+                "nameLocation": "185:5:29",
+                "nodeType": "VariableDeclaration",
+                "scope": 6077,
+                "src": "178:12:29",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 6073,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "178:6:29",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6076,
+                "mutability": "mutable",
+                "name": "patch",
+                "nameLocation": "207:5:29",
+                "nodeType": "VariableDeclaration",
+                "scope": 6077,
+                "src": "200:12:29",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 6075,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "200:6:29",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Version",
+            "nameLocation": "138:7:29",
+            "scope": 6085,
+            "visibility": "public"
+          },
+          {
+            "id": 6084,
+            "nodeType": "FunctionDefinition",
+            "src": "270:58:29",
+            "documentation": {
+              "id": 6078,
+              "nodeType": "StructuredDocumentation",
+              "src": "225:40:29",
+              "text": "@return The version of the contract."
+            },
+            "functionSelector": "54fd4d50",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "version",
+            "nameLocation": "279:7:29",
+            "parameters": {
+              "id": 6079,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "286:2:29"
+            },
+            "returnParameters": {
+              "id": 6083,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6082,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6084,
+                  "src": "312:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Version_$6077_memory_ptr",
+                    "typeString": "struct IVersioned.Version"
+                  },
+                  "typeName": {
+                    "id": 6081,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6080,
+                      "name": "Version",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6077,
+                      "src": "312:7:29"
+                    },
+                    "referencedDeclaration": 6077,
+                    "src": "312:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Version_$6077_storage_ptr",
+                      "typeString": "struct IVersioned.Version"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "311:16:29"
+            },
+            "scope": 6085,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IVersioned",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 6070,
+          "nodeType": "StructuredDocumentation",
+          "src": "78:26:29",
+          "text": "Implements versioning"
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          6085
+        ],
+        "name": "IVersioned",
+        "nameLocation": "114:10:29",
+        "scope": 6086,
+        "usedErrors": []
+      }
+    ],
+    "license": "MIT"
+  }
+}
