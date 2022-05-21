@@ -8,9 +8,11 @@ interface ITOKENMANAGER {
         external
         returns (uint256);
 
-    function decreaseCredit(uint256 tokenId, uint256 amount) external;
+    function decreaseCredit(uint256 tokenId, uint256 amount)
+        external
+        returns (uint256);
 
-    function claimUnderlying(uint256 tokenId) external;
+    function claimUnderlying(uint256 tokenId) external returns (uint256);
 
     function transferOwnership(address newOwner) external;
 }

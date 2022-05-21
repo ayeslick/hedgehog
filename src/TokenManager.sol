@@ -120,6 +120,7 @@ contract TokenManager is Ownable, Pausable, ReentrancyGuard {
         external
         whenNotPaused
         nonReentrant
+        returns (uint256)
     {
         address customer = msg.sender;
         uint256 amount = credit.deleteCREDIT(customer, tokenId);
@@ -127,6 +128,7 @@ contract TokenManager is Ownable, Pausable, ReentrancyGuard {
         creds.burn(customer, amount);
         ERC20(Token).safeTransferFrom(address(this), customer, amount);
         emit Withdrawal(customer, amount);
+        return amount;
     }
 
     function activateEmergency() external onlyOwner whenPaused {
