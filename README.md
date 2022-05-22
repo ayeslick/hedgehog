@@ -13,5 +13,7 @@ The Tempus-HedgeHog contract is a wrapper that receives a customers underlying c
 
 ## Acknowledgement
 Foundry - Tooling
+
 Element Finance - First introduction to the idea of splitting yield bearing assets into principal and yield tokens
+
 Tempus Finance - Fixed Income Protocol used in first integration
