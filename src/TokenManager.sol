@@ -61,6 +61,7 @@ contract TokenManager is Ownable, Pausable, ReentrancyGuard {
 
     function deposit(uint256 amount)
         external
+        payable
         whenNotPaused
         nonReentrant
         returns (uint256)

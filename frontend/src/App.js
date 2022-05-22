@@ -3,10 +3,10 @@ import './App.css';
 import HedgeHog from "./contracts/HedgeHog.json";
 import { ethers } from 'ethers';
 
-const hhAddress = "0x5133bbdfcca3eb4f739d599ee4ec45cbcd0e16c5";
+const hhAddress = "0x12bcb546bc60ff39f1adfc7ce4605d5bd6a6a876";
 const abi = {
   abi: [
-    "function depositThenRecieveCredsAndCredit(uint256 amount) external"
+    "function depositThenRecieveCredsAndCredit() external payable"
   ],
 };
 
@@ -61,11 +61,9 @@ function App() {
         const hhContract = new ethers.Contract(hhAddress, abi.abi, signer);
 
 
-        const hhTx = await hhContract.depositThenRecieveCredsAndCredit(ethers.utils.parseUnits("0.5", 18), {
-          gasLimit: 100000,
-        });
-        //dynamically pull the contents from the local blockchain
-        //and call the functions and display the results
+
+        const hhTx = await hhContract.depositThenRecieveCredsAndCredit(ethers.utils.formatUnits("0.1", 18), { gasLimit: 100000 });
+
         console.log("Mining... please wait");
         await hhTx.wait();
 

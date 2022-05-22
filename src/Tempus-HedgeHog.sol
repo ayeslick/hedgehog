@@ -70,6 +70,7 @@ contract HedgeHog is Ownable {
 
     function depositThenReceiveCredsAndCredit(uint256 amount) external {
         address customer = msg.sender;
+        uint256 balanceBefore = ERC20(tToken).balanceOf(address(this));
         ERC20(DAI).transferFrom(customer, address(this), amount);
         TEMPUS_CONTROLLER.depositAndFix(
             TEMPUS_AMM,
@@ -78,7 +79,9 @@ contract HedgeHog is Ownable {
             MINTYSRATE,
             DEADLINE
         );
-        uint256 credsRecieved = tokenmanager.deposit(amount);
+        uint256 balanceAfter = ERC20(tToken).balanceOf(address(this));
+        uint256 tempusTokens = balanceAfter - balanceBefore; //this assumes alot. create a function to correctly handle this
+        uint256 credsRecieved = tokenmanager.deposit(tempusTokens);
         //contract receives creds & credit. send to msg.sender
         ERC20(CREDS).transferFrom(address(this), customer, credsRecieved);
         ICREDIT(CREDIT).transferFrom(address(this), customer, 1); //for demo, should return both creds and credit
@@ -107,7 +110,7 @@ contract HedgeHog is Ownable {
     function claimUnderlying(uint256 tokenId) external returns (uint256) {
         //cannot access depositValue from here. The follow will have to do for now
         address customer = msg.sender;
-        ICREDIT(CREDIT).transferFrom(customer, address(this), tokenId);
+        ICREDIT(CREDIT).transferFrom(customer, address(this), tokenId); //contract has to be the current owner of the CREDIT
         uint256 amountOfClaimed = tokenmanager.claimUnderlying(tokenId); //assumes contract has enough creds before transferring from customer
         ERC20(CREDS).transferFrom(customer, address(this), amountOfClaimed); //contract doesnt know how many creds to transfer before calling tokenmanger
         return amountOfClaimed;
