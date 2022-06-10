@@ -12,6 +12,9 @@ Three contracts; Credits, Creds, and TokenManager, make up the core of the proto
 The Tempus-HedgeHog contract is a wrapper that receives a customers underlying collateral, deposit it into Tempus, receive and deposit the Tempus fixed income tokens into TokenManager then send the CREDS and CREDIT to the customer. 
 
 ## Acknowledgement
+
+🥇 Tempus — Best Use
+
 Foundry - Tooling
 
 Element Finance - First introduction to the idea of splitting yield bearing assets into principal and yield tokens
